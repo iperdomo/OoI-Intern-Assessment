@@ -8,7 +8,6 @@ import LandingPage from "./LandingPage";
 export default function App() {
 
   let isAuthenticated = localStorage.getItem("LOGIN-STATUS");
-  console.log(isAuthenticated);
 
 
   return (

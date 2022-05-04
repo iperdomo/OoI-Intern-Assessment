@@ -43,7 +43,7 @@ export default function Login() {
             password: password
         };
 
-        
+
 
         fetch('/api/users/login/', {
             method: 'POST',
@@ -118,6 +118,7 @@ export default function Login() {
                         fullWidth
                         variant="contained"
                         color="primary"
+                        name="signIn"
                         className={classes.submit}
                     >
 
