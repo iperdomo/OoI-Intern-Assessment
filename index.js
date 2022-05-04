@@ -49,8 +49,8 @@ class App {
     }
 
     start() {
-        this.server.listen(this.config.port, () => {
-            this.logger.info(`listening on http://localhost:${this.config.port}`);
+        this.server.listen(this.config.port, '0.0.0.0', () => {
+            this.logger.info(`listening on http://0.0.0.0:${this.config.port}`);
         });
         this.logger.info(`started in ${this.environment}.`);
         this.startTimeString = Date.now()

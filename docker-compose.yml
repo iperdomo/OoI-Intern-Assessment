@@ -1,0 +1,31 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:4.0.0-xenial
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - db-data:/data/db
+  client:
+    image: node:16.15.0-bullseye-slim
+    volumes:
+      - ./client:/client:delegated
+    working_dir: /client
+    user: node
+    depends_on:
+      - api
+  api:
+    image: node:16.15.0-bullseye-slim
+    volumes:
+      - ./:/api:delegated
+    working_dir: /api
+    user: node
+    environment:
+      - DB_NAME=juniper
+      - DB_URL=mongodb://root:root@mongodb:27017
+      - SERVER_PORT=9000
+    depends_on:
+      - mongodb
+volumes:
+  db-data:
