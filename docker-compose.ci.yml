@@ -4,7 +4,9 @@ services:
     environment:
       - CI=true
     user: root
+    command: ["tail", "-f", "/dev/null"]
   client:
     environment:
       - CI=true
     user: root
+    command: ["tail", "-f", "/dev/null"]
