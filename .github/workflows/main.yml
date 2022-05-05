@@ -1,7 +1,7 @@
 name: main
 on: [push]
 env:
-  CI_COMMIT: ${{ GITHUB_SHA }}
+  CI_COMMIT: ${{ github.sha }}
 jobs:
   build:
     runs-on: ubuntu-latest
