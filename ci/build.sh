@@ -26,9 +26,6 @@ dci up --build --detach
 echo "Running client tests..."
 dcie client npm run test
 
-echo "Running client production build..."
-dcie client npm run build
-
 echo "Building Docker images..."
 docker build \
 	-t "yvantcoop/ooi-backend:${CI_COMMIT}" \
