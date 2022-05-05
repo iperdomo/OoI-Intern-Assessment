@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -eux
 
 CI_COMMIT="${CI_COMMIT:=local}"
 CI_COMMIT="${CI_COMMIT:0:7}"
@@ -24,16 +24,16 @@ echo "Starting system..."
 dci up -d
 
 echo "Installing api dependencies..."
-dcie api bash -c 'set -e; npm ci --no-progress'
+dcie api npm ci
 
 echo "Installing client dependencies..."
-dcie client bash -c 'set -e; npm ci --no-progress'
+dcie client npm ci
 
 echo "Running client tests..."
-dcie client bash -c 'set -e; npm run test'
+dcie client npm run test
 
 echo "Running client production build..."
-dcie client bash -c 'set -e; npm run build'
+dcie client npm run build
 
 echo "Building Docker images..."
 docker build \
