@@ -11,7 +11,7 @@ dci() {
 export -f dci
 
 dcie() {
-	dci exec --no-TTY "$@"
+	dci exec -T "$@"
 }
 export -f dcie
 
@@ -21,7 +21,13 @@ dct() {
 export -f dct
 
 echo "Starting system..."
-dci up --build --detach
+dci up -d
+
+echo "Installing api dependencies..."
+dcie api npm ci --no-progress
+
+echo "Installing client dependencies..."
+dcie client npm ci --no-progress
 
 echo "Running client tests..."
 dcie client npm run test

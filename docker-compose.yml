@@ -10,7 +10,9 @@ services:
   client:
     image: node:16.15.0-bullseye-slim
     volumes:
-      - ./client:/client:delegated
+      - type: bind
+        source: ./client
+        target: /client
     working_dir: /client
     user: node
     depends_on:
@@ -18,7 +20,9 @@ services:
   api:
     image: node:16.15.0-bullseye-slim
     volumes:
-      - ./:/api:delegated
+      - type: bind
+        source: ./
+        target: /api
     working_dir: /api
     user: node
     environment:
