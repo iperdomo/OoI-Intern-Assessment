@@ -1,0 +1,17 @@
+version: "3"
+services:
+  api:
+    image: yvantcoop/ooi-backend:latest
+  client:
+    image: yvantcoop/ooi-client:latest
+    user: root
+  test:
+    image: alpine:3.15.4
+    entrypoint: "/tests/entrypoint.sh"
+    command: ["bash", "test.sh"]
+    working_dir: /tests
+    volumes:
+      - ./ci/tests:/tests/
+    depends_on:
+      - api
+      - client
