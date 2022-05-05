@@ -6,4 +6,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build and test
-        run: docker run --rm -v "$(pwd)/client:/code" --workdir /code --user node node:16.15.0-bullseye-slim bash -c 'npm ci && npm run build'
+        run: docker run --rm -v "$(pwd)/client:/code" --workdir /code node:16.15.0-bullseye-slim bash -c 'npm ci && npm run build'
