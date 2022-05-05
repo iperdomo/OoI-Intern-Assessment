@@ -10,23 +10,30 @@ dci() {
 }
 export -f dci
 
+dcie() {
+	dci exec --no-TTY "$@"
+}
+export -f dcie
+
 dct() {
 	docker-compose -f docker-compose.yml -f docker-compose.test.yml "$@"
 }
 export -f dct
 
+echo "Starting system..."
 dci up -d
+
 echo "Installing api dependencies..."
-dci exec api bash -c 'set -e; npm ci --no-progress'
+dcie api bash -c 'set -e; npm ci --no-progress'
 
 echo "Installing client dependencies..."
-dci exec client bash -c 'set -e; npm ci --no-progress'
+dcie client bash -c 'set -e; npm ci --no-progress'
 
 echo "Running client tests..."
-dci exec client bash -c 'set -e; npm run test'
+dcie client bash -c 'set -e; npm run test'
 
 echo "Running client production build..."
-dci exec client bash -c 'set -e; npm run build'
+dcie client bash -c 'set -e; npm run build'
 
 echo "Building Docker images..."
 docker build \
@@ -40,7 +47,6 @@ echo "Building client image..."
 		-t "yvantcoop/ooi-client:${CI_COMMIT}" \
 		-t "yvantcoop/ooi-client:latest" .
 )
-
 
 echo "Testing images..."
 dct up -d
