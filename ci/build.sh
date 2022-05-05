@@ -21,13 +21,7 @@ dct() {
 export -f dct
 
 echo "Starting system..."
-dci up -d
-
-echo "Installing api dependencies..."
-dcie api npm ci
-
-echo "Installing client dependencies..."
-dcie client npm ci
+dci up --build --detach
 
 echo "Running client tests..."
 dcie client npm run test
