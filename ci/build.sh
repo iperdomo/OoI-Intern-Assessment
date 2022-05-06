@@ -37,15 +37,15 @@ dcie client npm run build
 
 echo "Building Docker images..."
 docker build \
-	-t "ghcr.io/yvant-coop/ooi-backend:${CI_COMMIT}" \
-	-t "ghcr.io/yvant-coop/ooi-backend:latest" .
+	-t "yvantcoop/ooi-backend:${CI_COMMIT}" \
+	-t "yvantcoop/ooi-backend:latest" .
 
 echo "Building client image..."
 (
 	cd client
 	docker build \
-		-t "ghcr.io/yvant-coop/ooi-client:${CI_COMMIT}" \
-		-t "ghcr.io/yvant-coop/ooi-client:latest" .
+		-t "yvantcoop/ooi-client:${CI_COMMIT}" \
+		-t "yvantcoop/ooi-client:latest" .
 )
 
 echo "Testing images..."
