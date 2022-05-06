@@ -1,9 +1,9 @@
 version: "3"
 services:
   api:
-    image: yvantcoop/ooi-backend:latest
+    image: ghcr.io/yvant-coop/ooi-backend:latest
   client:
-    image: yvantcoop/ooi-client:latest
+    image: ghcr.io/yvant-coop/ooi-client:latest
     user: root
   test:
     image: alpine:3.15.4
