@@ -8,9 +8,9 @@ set -eu
 set -o pipefail
 
 # Set default values if `source env.sh` has not been run
-BACKEND_IMAGE="${BACKEND_IMAGE:=yvantcoop/ooi-backend:latest}"
+API_IMAGE="${API_IMAGE:=yvantcoop/ooi-backend:latest}"
 NAME="${APP_NAME:=ooi-test}"
-TAG="$(echo $BACKEND_IMAGE | cut -d: -f2)"
+TAG="$(echo $API_IMAGE | cut -d: -f2)"
 APP_VERSION="${NAME}-${TAG}"
 AWS_REGION="${AWS_REGION:=eu-west-1}"
 

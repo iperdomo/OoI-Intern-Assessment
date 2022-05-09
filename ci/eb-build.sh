@@ -9,7 +9,7 @@ set -o pipefail
 
 # Set default values if `source env.sh` has not been run
 CLIENT_IMAGE="${CLIENT_IMAGE:=yvantcoop/ooi-client:latest}"
-BACKEND_IMAGE="${BACKEND_IMAGE:=yvantcoop/ooi-backend:latest}"
+API_IMAGE="${API_IMAGE:=yvantcoop/ooi-backend:latest}"
 NAME="${APP_NAME:=ooi-test}"
 TAG="${DOCKER_TAG:=latest}"
 
