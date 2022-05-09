@@ -2,6 +2,13 @@ name: main
 on: [push]
 env:
   CI_COMMIT: ${{ github.sha }}
+
+  # Elastic Beanstalk environment to deploy to
+  DEPLOY_ENV: agora-test-a
+
+  AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
