@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    deploy:
+      resources:
+        reservations:
+          memory: 256M
+    volumes:
+      - "./.env:/usr/src/app/.env:ro"
+      - "./rds-combined-ca-bundle.pem:/etc/ssl/certs/rds-combined-ca-bundle.pem"
+      - "/var/log/eb-docker/containers/nginx:/usr/src/app/log"

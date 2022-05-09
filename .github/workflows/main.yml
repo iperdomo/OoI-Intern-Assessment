@@ -18,3 +18,16 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Publish Docker images
         run: ./ci/docker-push.sh
+
+      # Build and push Docker image & Elastic Beanstalk bundle (skip for pull requests)
+      - name: Build and Push Application
+        if: github.event_name == 'push'
+        run: |
+          source ci/env.sh
+          ./ci/eb-build.sh
+          ./ci/eb-publish.sh
+
+      # Deploy to Elastic Beanstalk (skip for pull requests)
+      - name: Deploy to Elastic Beanstalk
+        if: github.event_name == 'push'
+        run: source ci/env.sh && ./ci/eb-deploy.sh "$DEPLOY_ENV"
