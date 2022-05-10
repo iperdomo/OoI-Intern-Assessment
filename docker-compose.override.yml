@@ -16,7 +16,7 @@ services:
       - mongodb
   client:
     # command: ["tail", "-f", "/dev/null"] # debugging
-    command: ["bash", "-c", "echo 'Starting...' && npm install && npm start"]
+    command: ["/bin/sh", "-c", "echo 'Starting...' && npm install && npm start"]
     environment:
       - CI=true # react-scripts hack - https://github.com/facebook/create-react-app/issues/8688
       - BROWSER=none
@@ -25,4 +25,4 @@ services:
       - "3000:3000"
   api:
     command:
-      ["bash", "-c", "echo 'Starting...' && npm install && node index.js"]
+      ["/bin/sh", "-c", "echo 'Starting...' && npm install && node index.js"]
