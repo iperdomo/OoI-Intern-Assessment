@@ -13,3 +13,13 @@ Go as far as you can in the allotted time.
 ## Submission
 
 Once you complete the assignment, please make your repository private and invite `mehranhydary` and `tenthirtyone` to the repository so that your solution can be reviewed by UNICEF.
+
+
+## License
+
+The source code for development environment (`docker-compose*.yml`) and CI/CD files (`ci/*`,
+`deploy/*`) are subject to the terms of the Mozilla Public License, v2.0. If a copy of the MPL was
+not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+The rest of the application code is released under the terms of the original authors at:
+https://github.com/unicef/OoI-Intern-Assessment
